@@ -4,24 +4,45 @@
 
         </canvas>
         <script>
-            var folhaDesenho = document.getElementById("folha");
-            var areaDesenho = folhaDesenho.getContext("2d");
+            window.onload = function() {
+                setInterval(execute, 1000/30);
+            };
 
-            areaDesenho.fillStyle = '#286047';
-            areaDesenho.fillRect(0, 0, 600, 500);
+            var posicaoBolaX = posicaoBolaY = 10;
 
-            // Linha 
-            areaDesenho.fillStyle = '#ffffff';
-            areaDesenho.fillRect(297.5, 0, 5, 500);
+            function execute() {
 
-            // Raquete 1
-            areaDesenho.fillRect(0, 200, 5, 50);
+                var folhaDesenho = document.getElementById("folha");
+                var areaDesenho = folhaDesenho.getContext("2d");
 
-            // Raquete 2
-            areaDesenho.fillRect(595, 200, 5, 50);
+                var larguraCampo = 600;
+                var alturaCampo = 500;
+                var larguraLinha = 5;
+                var tamanhoBola = 5;
+                var alturaRaquete = 50;
 
-            // Bola           
-            areaDesenho.fillRect(30, 225, 5, 5);
+                
+
+                areaDesenho.fillStyle = '#286047'; // cor verde
+                areaDesenho.fillRect(0, 0, larguraCampo, alturaCampo);
+
+                // Linha 
+                areaDesenho.fillStyle = '#ffffff';
+                areaDesenho.fillRect(larguraCampo/2 -larguraLinha/2, 0, larguraLinha, alturaCampo);
+
+                // Raquete 1
+                areaDesenho.fillRect(0, 200, larguraLinha, alturaRaquete);
+
+                // Raquete 2
+                areaDesenho.fillRect(larguraCampo - larguraLinha, 200, larguraLinha, alturaRaquete);
+    
+                // Bola           
+                areaDesenho.fillRect(posicaoBolaX - tamanhoBola / 2, posicaoBolaY - tamanhoBola / 2, tamanhoBola, tamanhoBola);
+
+                posicaoBolaY = posicaoBolaY + 1;
+                posicaoBolaX = posicaoBolaX + 1;
+
+            };
 
 
         </script>
